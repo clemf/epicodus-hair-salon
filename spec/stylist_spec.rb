@@ -28,3 +28,13 @@ describe '#==' do
     expect(test_stylist).to eq test_stylist2
   end
 end
+
+describe '.find' do
+  it 'takes an id and returns the stylist from the database' do
+    test_stylist = Stylist.new('Sally', nil)
+    test_stylist.save
+    test_stylist2 = Stylist.new('Sally', nil)
+    test_stylist2.save
+    expect(Stylist.find(test_stylist.id)).to eq test_stylist
+  end
+end

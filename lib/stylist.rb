@@ -26,4 +26,13 @@ class Stylist
     name == comparison.name
   end
 
+  def self.find(id)
+    result = nil
+    DB.exec("SELECT * FROM stylists WHERE id = #{id};").each do |stylist|
+      id = stylist["id"].to_i
+      name = stylist["name"]
+      result = (Stylist.new(name, id))
+    end
+    result
+  end
 end
