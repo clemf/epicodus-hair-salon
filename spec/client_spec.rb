@@ -28,3 +28,13 @@ describe '#==' do
     expect(test_client).to eq test_client2
   end
 end
+
+describe '.find' do
+  it 'takes an id and returns the client from the database' do
+    test_client = Client.new('Sally', nil, nil)
+    test_client.save
+    test_client2 = Client.new('Sally', nil, nil)
+    test_client2.save
+    expect(Client.find(test_client.id)).to eq test_client
+  end
+end

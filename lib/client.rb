@@ -28,4 +28,14 @@ class Client
     name == comparison.name
   end
 
+  def self.find(id)
+    result = nil
+    DB.exec("SELECT * FROM clients WHERE id = #{id};").each do |client|
+      id = client["id"].to_i
+      name = client["name"]
+      stylist_id = client["stylist_id"].to_i
+      result = (Client.new(name, stylist_id, id))
+    end
+    result
+  end
 end
