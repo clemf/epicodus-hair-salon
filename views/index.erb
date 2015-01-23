@@ -2,7 +2,7 @@
 	<h1>Stylists</h1>
 	<ul>
 		<% @stylists.each do |stylist| %>
-		<li> <%= stylist.name %> </li>
+		<li><%= stylist.name %></a></li>
 		<% end %>
 	</ul>
 
@@ -18,7 +18,7 @@
 	<h1>Clients</h1>
 	<ul>
 		<% @clients.each do |client| %>
-		<li> <%= client.name %> </li>
+		<li><a href="/clients/<%= client.id %>"><%= client.name %></a></li>
 		<% end %>
 	</ul>
 
