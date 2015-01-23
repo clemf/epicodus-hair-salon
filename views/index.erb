@@ -1,6 +1,13 @@
 <h1>Stylists</h1>
 <ul>
-	<% Stylist.all.each do |stylist| %>
+	<% @stylists.each do |stylist| %>
 	<li> <%= stylist.name %> </li>
 	<% end %>
 </ul>
+
+<form action="/addstylist" method="post">
+  <label for="name">Add a stylist:</label>
+  <input id="name" name="name" type="text" placeholder="enter name">
+
+  <button type="submit">Add stylist</button>
+</form>
