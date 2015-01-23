@@ -1,1 +1,6 @@
-hello
+<h1>Stylists</h1>
+<ul>
+	<% Stylist.all.each do |stylist| %>
+	<li> <%= stylist.name %> </li>
+	<% end %>
+</ul>

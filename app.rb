@@ -8,5 +8,6 @@ require './lib/stylist'
 DB = PG.connect({:dbname => 'hair_salon'})
 
 get '/' do
+  stylists = Stylist.all
   erb :index
 end
