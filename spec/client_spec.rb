@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe '.new' do
-  it 'takes in name, nil id, and creates a client object' do
+  it 'takes in name, nil stylist_id, nil id, and creates a client object' do
     test_client = Client.new('Sally', nil, nil)
     expect(test_client.name).to eq 'Sally'
   end
