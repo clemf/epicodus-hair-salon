@@ -19,7 +19,7 @@ post '/addstylist' do
 end
 
 post '/addclient' do
-  Client.new(params.fetch("name"), nil, nil).save
+  Client.new(params.fetch("name"), 0, nil).save
   redirect '/'
 end
 
