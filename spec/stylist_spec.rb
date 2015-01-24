@@ -38,3 +38,17 @@ describe '.find' do
     expect(Stylist.find(test_stylist.id)).to eq test_stylist
   end
 end
+
+describe '#list_clients' do
+  it 'returns an array of all clients for the stylist' do
+    test_stylist = Stylist.new('Sally', nil)
+    test_stylist.save
+    test_client = Client.new('Frank', 0, nil)
+    test_client.save
+    test_client.associate_stylist(test_stylist.id)
+    test_client2 = Client.new('Frank', 0, nil)
+    test_client2.save
+    test_client2.associate_stylist(test_stylist.id)
+    expect(test_stylist.list_clients).to eq [test_client.id, test_client2.id]
+  end
+end

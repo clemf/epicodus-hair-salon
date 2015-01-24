@@ -35,4 +35,13 @@ class Stylist
     end
     result
   end
+
+  def list_clients
+    results = []
+    DB.exec("SELECT * FROM clients WHERE stylist_id = #{@id}").each do |client|
+      id = client["id"].to_i
+      results.push(id)
+    end
+    results
+  end
 end
