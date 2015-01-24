@@ -1,1 +1,16 @@
 <h1><%= @stylist.name %></h1>
+
+<% if @clients == [] %>
+	<h3><%= @stylist.name %> has no clients</h3>
+<% else %>
+	<h3><%= @stylist.name %>'s clients:</h3>
+<% end %>
+
+<ul>
+	<% @clients.each do |client| %>
+		<% client_object = Client.find(client) %>
+		<li><a href="/clients/<%= client.to_i %>"><%= client_object.name %></a></li>
+	<% end %>
+</ul>
+
+<p><a href="/">Return to index</p>
