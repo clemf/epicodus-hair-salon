@@ -33,7 +33,7 @@ In your browser, navigate to [http://localhost:4567/](http://localhost:4567/).
 About
 -----
 
-Written by Clem Freeman [Epicodus](http://www.epicodus.com/).
+Written by Clem Freeman at [Epicodus](http://www.epicodus.com/).
 
 License
 -------
