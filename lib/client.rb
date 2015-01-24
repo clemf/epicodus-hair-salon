@@ -9,7 +9,7 @@ class Client
   end
 
   def save
-    db_id = DB.exec("INSERT INTO clients (name) VALUES ('#{@name}') RETURNING id;")
+    db_id = DB.exec("INSERT INTO clients (name, stylist_id) VALUES ('#{@name}', #{@stylist_id}) RETURNING id;")
     @id = db_id[0]["id"].to_i
   end
 
@@ -37,5 +37,10 @@ class Client
       result = (Client.new(name, stylist_id, id))
     end
     result
+  end
+
+  def associate_stylist(id)
+    DB.exec("UPDATE clients SET stylist_id = #{id} WHERE id = #{@id};")
+    @stylist_id = id
   end
 end

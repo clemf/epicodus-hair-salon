@@ -25,5 +25,18 @@ end
 
 get '/clients/:id' do
   @client = Client.find(params.fetch("id"))
+  @stylists = Stylist.all
   erb :client
+end
+
+get '/stylists/:id' do
+  @stylist = Stylist.find(params.fetch("id"))
+  erb :stylist
+end
+
+patch '/associate-stylist' do
+  stylist = params.fetch("stylist_id").to_i
+  client = params.fetch("client_id").to_i
+  Client.find(client).associate_stylist(stylist)
+  redirect back
 end

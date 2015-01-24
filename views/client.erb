@@ -1,1 +1,23 @@
 <h1><%= @client.name %></h1>
+
+<% if @client.stylist_id == 0 %>
+	<h3><%= @client.name %> does not have a stylist.</h3>
+<% else %>
+	<h3><%= @client.name %>'s stylist is <%= Stylist.find(@client.stylist_id).name %>.</h3>
+<% end %>
+
+<form action="/associate-stylist" method="post">
+	<input name="_method" type="hidden" value="patch">
+  <label for="stylist_id">Select a stylist for this client:</label>
+  <select id='stylist_id' name='stylist_id' type='text'>
+    <% @stylists.each() do |stylist| %>
+      <option value="<%= stylist.id()%>"> <%= stylist.name() %> </option>
+    <% end %>
+  </select>
+
+  <input id="client_id" name="client_id" type="hidden" value="<%= @client.id %>">
+
+  <button type="submit">Associate stylist</button>
+</form>
+
+<p><a href="/">Return to index</p>

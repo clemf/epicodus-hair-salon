@@ -38,3 +38,14 @@ describe '.find' do
     expect(Client.find(test_client.id)).to eq test_client
   end
 end
+
+describe '#associate_stylist' do
+  it 'takes a stylist id and associates client with a stylist in the database' do
+    test_client = Client.new('Sally', nil, nil)
+    test_client.save
+    test_stylist = Stylist.new('Edward', nil)
+    test_stylist.save
+    test_client.associate_stylist(test_stylist.id)
+    expect(test_client.stylist_id).to equal test_stylist.id
+  end
+end
